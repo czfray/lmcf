@@ -15,6 +15,7 @@ let time;
 updateTrafficCamData();
 
 const camSelector = document.getElementById("selectCam");
+const failureShower = document.getElementById("failure");
 
 for (const [key, name] of Object.entries(cameras)){
     const newOption = document.createElement("option");
@@ -44,6 +45,15 @@ updateImage();
 setInterval(updateImage, 5000);
 
 function updateImage(){
+    camViewer.onerror = function() {
+        this.style.display = 'none';
+        failureShower.style.display = 'block';
+    };
+    camViewer.onload = function() {
+        this.style.display = 'block';
+        failureShower.style.display = 'none';
+    };
+
     camViewer.src = `https://tdcctv.data.one.gov.hk/${camSelector.value}.JPG?t=${Date.now()}`;
     timeShower.textContent = `最後更新 Last Update: ${new Date().toLocaleString()}`;
 }

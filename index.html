@@ -13,7 +13,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Xmind:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css?v=0.2">
-        <script type="module" src="script.js?v=0.2.3"></script>
+        <script type="module" src="script.js?v=0.2.4"></script>
 
         <link rel="icon" type="image/png" href="icon.png">
         <link rel="apple-touch-icon" href="icon.png">
@@ -34,13 +34,13 @@
         <select id="selectCam" class="dirtywhite"></select>
         <br><br>
 
-        <img id="camImage" alt="Traffic Camera Image" width="320px" height="auto" class="center" onerror="this.style.display='none';">
+        <img id="camImage" alt="Traffic Camera Image" width="320px" height="auto" class="center">
 
-        <template id="failureTemplate">
+        <p id="failure">
             <br>
-            <p class="failtc dirtywhite small bold center nomargin"></p>
-            <p class="failen dirtywhite small thin center nomargin"></p>
-        </template>
+            <p class="dirtywhite small bold center nomargin">連唔到線</p>
+            <p class="dirtywhite small thin center nomargin">Cannot connect to the camera</p>
+        </p>
 
         <br>
         <p class="gray center extrasmall">
