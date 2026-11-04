@@ -118,13 +118,25 @@ select {
     border: 3px solid #a4b0be;
     display: block;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 .otherPicker{
     padding: 8px;
-    width: 175px;
+    width: 160px;
     font-size: clamp(12px, 3vw, 16px);
     border: 2px solid #a4b0be;
+    
+}
+
+.langPicker{
+    padding: 10px;
+    width: 75px;
+    font-size: clamp(11px, 3vw, 15px);
+    border: 3px solid #a4b0be;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
 button {

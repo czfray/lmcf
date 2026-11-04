@@ -1,9 +1,13 @@
-const lang = "Tc"; //En, Tc, Sc
-let response = await fetch(`https://static.data.gov.hk/td/traffic-snapshot-images/code/Traffic_Camera_Locations_${lang}.xml`);
-const trafficCamData = await response.text();
+const langSelector = document.getElementById("selectLang");
 
-const parser = new DOMParser();
-const xml = parser.parseFromString(trafficCamData, "application/xml");
+const savedLang = localStorage.getItem("lang");
+if (savedLang && (savedLang == "Tc" || savedLang == "Sc" || savedLang == "En")) {
+    langSelector.value = savedLang;
+}
+else {
+    langSelector.value = "Tc";
+    localStorage.setItem("lang", "Tc");
+}
 
 let regions;
 let regionCameras;
@@ -16,7 +20,7 @@ const districtSelector = document.getElementById("selectDistrict");
 const camSelector = document.getElementById("selectCam");
 const failureShower = document.getElementById("failure");
 
-updateTrafficCamData();
+await updateTrafficCamData();
 initOptions();
 
 const camViewer = document.getElementById("camImage");
@@ -35,14 +39,15 @@ regionSelector.addEventListener("change", () => {
     setDistrictSelectorOptions();
 });
 
-const savedCam = localStorage.getItem("cam");
-if (savedCam && cameras[savedCam]) {
-    camSelector.value = savedCam;
-}
-else{
-    camSelector.selectedIndex = 0;
-    localStorage.setItem("cam", camSelector.value);
-}
+langSelector.addEventListener("change", async () => {
+    localStorage.setItem("lang", langSelector.value);
+    await updateTrafficCamData();
+    initOptions();
+    loadSave();
+    updateImage();
+});
+
+loadSave();
 
 updateImage();
 setInterval(updateImage, 5000);
@@ -51,7 +56,7 @@ function initOptions() {
     regionSelector.replaceChildren();
     const allRegOption = document.createElement("option");
     allRegOption.value = "ALL";
-    allRegOption.textContent = lang == "En" ? "All Regions" : "所有地區";
+    allRegOption.textContent = langSelector.value == "En" ? "All Regions" : (langSelector.value == "Sc"? "所有地区": "所有地區");
     regionSelector.appendChild(allRegOption);
 
     for (const key of Object.keys(regions)) {
@@ -64,7 +69,7 @@ function initOptions() {
     districtSelector.replaceChildren();
     const allDisOption = document.createElement("option");
     allDisOption.value = "ALL";
-    allDisOption.textContent = lang == "En" ? "All Districts" : "所有區域";
+    allDisOption.textContent = langSelector.value == "En" ? "All Districts" : (langSelector.value == "Sc"? "所有区域": "所有區域");
     districtSelector.appendChild(allDisOption);
 
     for (const key of Object.keys(districts)) {
@@ -83,6 +88,17 @@ function initOptions() {
     }
 }
 
+function loadSave(){
+    const savedCam = localStorage.getItem("cam");
+    if (savedCam && cameras[savedCam]) {
+        camSelector.value = savedCam;
+    }
+    else {
+        camSelector.selectedIndex = 0;
+        localStorage.setItem("cam", camSelector.value);
+    }
+}
+
 function setDistrictSelectorOptions(){
     const previousDistrict = districtSelector.value;
     districtSelector.replaceChildren();
@@ -94,7 +110,7 @@ function setDistrictSelectorOptions(){
 
     const allDisOption = document.createElement("option");
     allDisOption.value = "ALL";
-    allDisOption.textContent = lang == "En" ? "All Districts" : "所有區域";
+    allDisOption.textContent = langSelector.value == "En" ? "All Districts" : (langSelector.value == "Sc"? "所有区域": "所有區域");
     districtSelector.appendChild(allDisOption);
     
     for (const district of districtCanChoose){
@@ -154,13 +170,20 @@ function updateImage(){
     timeShower.textContent = `最後更新 Last Update: ${new Date().toLocaleString()}`;
 }
 
-function updateTrafficCamData() {
+async function updateTrafficCamData() {
+
+    let response = await fetch(`https://static.data.gov.hk/td/traffic-snapshot-images/code/Traffic_Camera_Locations_${langSelector.value}.xml`);
+    const trafficCamData = await response.text();
+
+    const parser = new DOMParser();
+    const dataXml = parser.parseFromString(trafficCamData, "application/xml");
+
     regions = {};
     regionCameras = {};
     districts = {};
     cameras = {};
 
-    const camerasDatas = xml.querySelectorAll("image-list image");
+    const camerasDatas = dataXml.querySelectorAll("image-list image");
     for (const cameraData of camerasDatas) {
         const key = cameraData.querySelector("key").textContent;
         const name = cameraData.querySelector("description").textContent;
