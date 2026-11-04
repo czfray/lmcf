@@ -12,8 +12,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Xmind:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css?v=0.1">
-        <script type="module" src="script.js?v=0.1"></script>
+        <link rel="stylesheet" href="style.css?v=0.2">
+        <script type="module" src="script.js?v=0.2"></script>
 
         <link rel="icon" type="image/png" href="icon.png">
         <link rel="apple-touch-icon" href="icon.png">
@@ -34,7 +34,7 @@
         <select id="selectCam" class="dirtywhite"></select>
         <br><br>
 
-        <img id="camImage" alt="Traffic Camera Image" width="320px" height="auto" class="center">
+        <img id="camImage" alt="Traffic Camera Image" width="320px" height="auto" onerror="this.onerror=null; this.src='backup.png';" class="center">
 
         <template id="failureTemplate">
             <br>
@@ -46,7 +46,7 @@
         <p class="gray center extrasmall">
             © 2026 Chan Ray
             <br>
-            v0.1 - 路面情況 LMCF
+            v0.2 - 路面情況 LMCF
         </p>
         
     </body>

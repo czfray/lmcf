@@ -27,10 +27,18 @@ const camViewer = document.getElementById("camImage");
 const timeShower = document.getElementById("time");
 
 camSelector.addEventListener("change", () => {
+    localStorage.setItem("cam", camSelector.value);
     updateImage();
 });
 
-camSelector.selectedIndex = 0;
+const savedCam = localStorage.getItem("cam");
+if (savedCam && cameras[savedCam]) {
+    camSelector.value = savedCam;
+}
+else{
+    camSelector.selectedIndex = 0;
+    localStorage.setItem("cam", camSelector.value);
+}
 updateImage();
 
 setInterval(updateImage, 5000);
