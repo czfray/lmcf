@@ -70,6 +70,10 @@ p {
     color: #a4b0be;
 }
 
+.yellow{
+    color: #eccc68;
+}
+
 .train {
     display: grid;
     grid-template-columns: 4fr 1fr 1fr 1fr 1fr;

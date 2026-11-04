@@ -6,6 +6,7 @@ const parser = new DOMParser();
 const xml = parser.parseFromString(trafficCamData, "application/xml");
 
 let regions;
+let regionCameras;
 let districts;
 let cameras;
 
@@ -41,6 +42,7 @@ function updateImage(){
 
 function updateTrafficCamData() {
     regions = {};
+    regionCameras = {};
     districts = {};
     cameras = {};
 
@@ -60,15 +62,24 @@ function updateTrafficCamData() {
             regions[region].push(district);
         }
 
+        if(!regionCameras[region]){
+            regionCameras[region] = [];
+        }
+        if(!regionCameras[region].includes(key)){
+            regionCameras[region].push(key);
+        }
+
+
         if (!districts[district]) {
             districts[district] = [];
         }
         if (!districts[district].includes(key)) {
             districts[district].push(key);
         }
+        
     }
 
-    console.log("Regions:", regions);
+    console.log("Regions:", regions, regionCameras);
     console.log("Districts:", districts);
     console.log("Cameras:", cameras);
 }
