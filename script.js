@@ -44,6 +44,11 @@ updateImage();
 setInterval(updateImage, 5000);
 
 function updateImage(){
+    camViewer.onerror = () => {
+        camViewer.onerror = null;
+        camViewer.src = "backup.png";
+    };
+    
     camViewer.src = `https://tdcctv.data.one.gov.hk/${camSelector.value}.JPG?t=${Date.now()}`;
     timeShower.textContent = `最後更新 Last Update: ${new Date().toLocaleString()}`;
 }
