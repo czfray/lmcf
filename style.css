@@ -161,4 +161,6 @@ input, select, textarea {
 img {
     display: block;
     margin: 0 auto;
+    border: 3.5px solid #eccc68;
+    border-radius: 8px;
 }
