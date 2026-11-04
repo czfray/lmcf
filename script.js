@@ -32,10 +32,10 @@ camSelector.addEventListener("change", () => {
 camSelector.selectIndex = 0;
 updateImage();
 
-setInterval(updateImage, 30000);
+setInterval(updateImage, 5000);
 
 function updateImage(){
-    camViewer.src = `https://tdcctv.data.one.gov.hk/${camSelector.value}.JPG`;
+    camViewer.src = `https://tdcctv.data.one.gov.hk/${camSelector.value}.JPG?t=${Date.now()}`;
     timeShower.textContent = `最後更新 Last Update: ${new Date().toLocaleString()}`;
 }
 
