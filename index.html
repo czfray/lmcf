@@ -34,7 +34,7 @@
         <select id="selectCam" class="dirtywhite"></select>
         <br><br>
 
-        <img id="camImage" alt="Traffic Camera Image" width="320px" height="auto" class="center">
+        <img id="camImage" alt="Traffic Camera Image" width="320px" height="auto" class="center" onerror="if (this.src != './backup.png') this.src = './backup.png';">
 
         <template id="failureTemplate">
             <br>
