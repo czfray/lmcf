@@ -30,7 +30,7 @@ camSelector.addEventListener("change", () => {
     updateImage();
 });
 
-camSelector.selectIndex = 0;
+camSelector.selectedIndex = 0;
 updateImage();
 
 setInterval(updateImage, 5000);
