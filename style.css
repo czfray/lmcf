@@ -1,0 +1,160 @@
+body {
+    background-color: #2f3542;
+    padding-bottom: 100px;
+}
+
+h1 {
+    font-family: 'Xmind', sans-serif;
+    font-style: normal;
+}
+
+h2 {
+    font-family: 'Xmind', sans-serif;
+    font-style: normal;
+}
+
+p {
+    font-family: 'Xmind', sans-serif;
+    font-style: normal;
+}
+
+.center{
+    text-align: center;
+}
+
+.left{
+    text-align: left;
+}
+
+.big {
+    font-size: clamp(35px, 7vw, 50px);
+}
+
+.medium {
+    font-size: clamp(20px, 4vw, 30px);
+}
+
+.small {
+    font-size: clamp(18px, 3vw, 27px);
+}
+
+.extrasmall {
+    font-size: clamp(13px, 3vw, 18px);
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.thin{
+    font-weight: 400;
+}
+
+.red {
+    color: #ff4757;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.dirtywhite{
+    color: #dfe4ea;
+}
+
+.green{
+    color: #7bed9f;
+}
+
+.gray{
+    color: #a4b0be;
+}
+
+.train {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+}
+
+.lrt {
+    display: grid;
+    grid-template-columns: 2fr 8fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+}
+
+.nomargin{
+    padding: 5px;
+    margin: 0px 0;
+}
+
+.top{
+    margin-top: 50px;
+}
+
+select {
+    padding: 10px;
+    font-size: clamp(14px, 3vw, 18px);
+    border: 3px solid #a4b0be;
+    border-radius: 8px;
+    width: 350px;
+    background-color: #57606f;
+    text-align: center;
+    font-family: 'Xmind', sans-serif;
+    text-align-last: center;
+    display: block;
+    margin: 0 auto;
+    appearance: none;
+    -webkit-appearance: none;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+button {
+    padding: 10px;
+    border-radius: 8px;
+    width: 100px;
+    background-color: #57606f;
+    font-family: 'Xmind', sans-serif;
+    text-align-last: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.lrtbut{
+    color: #7bed9f;
+    border: 3px solid #7bed9f;
+}
+
+.mtrbut{
+    color: #ff4757;
+    border: 3px solid #ff4757;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+html, body {
+    overflow-x: clip;
+    width: 100%;
+    margin: 0;
+}
+
+input, select, textarea {
+    font-size: 16px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}

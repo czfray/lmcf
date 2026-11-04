@@ -1,0 +1,56 @@
+<html>
+    <head>
+
+        <link rel="manifest" href="manifest.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+        <title>路面情況 LMCF</title>
+        <meta name="description" content="睇吓而家路面點樣樣 See what the road looks like now">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Xmind:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css?v=0.1">
+        <script type="module" src="script.js?v=0.1"></script>
+
+        <link rel="icon" type="image/png" href="icon.png">
+        <link rel="apple-touch-icon" href="icon.png">
+
+    </head>
+    <body>
+        
+        <h1 class="white bold center top">
+            <span class="big">而家路面咩情況？</span>
+            <br>
+            <span class="medium">What does the road look like?</span>
+        </h1>
+        
+        <p id = "time" class = "dirtywhite center thin extrasmall">
+            最後更新 Last Update: NA
+        </p>
+
+        <select id="selectCam" class="dirtywhite"></select>
+        <br><br>
+
+        <img id="camImage" alt="Traffic Camera Image" width="500px" height="auto" class="center">
+
+        <template id="failureTemplate">
+            <br>
+            <p class="failtc dirtywhite small bold center nomargin"></p>
+            <p class="failen dirtywhite small thin center nomargin"></p>
+        </template>
+
+        <br>
+        <p class="gray center extrasmall">
+            © 2026 Chan Ray
+            <br>
+            v0.1 - 路面情況 LMCF
+        </p>
+        
+    </body>
+
+</html>
+
+

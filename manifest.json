@@ -1,0 +1,10 @@
+{
+    "name": "# 路面情況",
+    "short_name": "LMCF",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#2f3542",
+    "theme_color": "#ffffff",
+    "version": "v0.1"
+}
