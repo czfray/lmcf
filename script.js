@@ -43,17 +43,19 @@ updateImage();
 
 setInterval(updateImage, 5000);
 
-async function updateImage(){
+function updateImage() {
     const url = `https://tdcctv.data.one.gov.hk/${camSelector.value}.JPG?t=${Date.now()}`;
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Fetch failed");
-         camViewer.src = url;
-    } catch (error) {
-        camViewer.src = "backup.png";
-    }
+    const img = new Image();
 
-    timeShower.textContent = `最後更新 Last Update: ${new Date().toLocaleString()}`;
+    img.onload = () => {
+        camViewer.src = url;
+    };
+
+    img.onerror = () => {
+        camViewer.src = "backup.png";
+    };
+
+    img.src = url;
 }
 
 function updateTrafficCamData() {
